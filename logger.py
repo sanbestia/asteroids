@@ -139,6 +139,6 @@ def log_event(event_type, **details):
 def main():
     pass      
 
-
 if __name__ == "__main__":
     main()
+    
