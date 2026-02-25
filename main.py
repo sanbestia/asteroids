@@ -4,6 +4,7 @@ from constants import SCREEN_WIDTH, SCREEN_HEIGHT, PLAYER_RADIUS, LINE_WIDTH
 from circleshape import CircleShape
 from player import Player
 from asteroid import Asteroid
+from asteroidfield import AsteroidField
 
 
 def main():
@@ -22,10 +23,14 @@ def main():
     
     Player.containers = (updatable, drawable)
     Asteroid.containers = (asteroids, updatable, drawable)
+    AsteroidField.containers = (updatable)
     
     # Create instance of player
     player = Player(SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
 
+    # Create instance of asteroids field to allocate asteroids
+    asteroid_field = AsteroidField()
+    
     
     # Main inf loop
     while True:
