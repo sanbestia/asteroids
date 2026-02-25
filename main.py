@@ -14,6 +14,9 @@ def main():
     clock = pygame.time.Clock()
     dt = 0
     
+    # Create instance of player
+    player = Player(SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
+    
     # Main inf loop
     while True:
         # Log game state data to game_state.jsonl
@@ -25,9 +28,11 @@ def main():
                 return
         screen.fill("black")
         
-        # Create instance of player and draw it on screen
-        player = Player(SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
+        # Update player state
+        player.update(dt)
+        # Draw player on screen
         player.draw(screen)
+        
         
         # Refresh screen
         pygame.display.flip()
