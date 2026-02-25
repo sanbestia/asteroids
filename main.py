@@ -1,5 +1,6 @@
+import sys
 import pygame
-from logger import log_state
+from logger import log_state, log_event
 from constants import SCREEN_WIDTH, SCREEN_HEIGHT, PLAYER_RADIUS, LINE_WIDTH
 from circleshape import CircleShape
 from player import Player
@@ -48,7 +49,14 @@ def main():
         # Draw game objects on screen
         for object in drawable:
             object.draw(screen)
-        
+            
+        # Check for collisions between player and asteroids
+        for asteroid in asteroids:
+            if player.collides_with(asteroid):
+                log_event("player_hit")
+                print("Game over!")
+                sys.exit()
+                
         
         # Refresh screen
         pygame.display.flip()
